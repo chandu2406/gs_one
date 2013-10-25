@@ -1,0 +1,35 @@
+<html>
+<head>
+</head>
+<body>
+<script>
+function xmlrequest() {
+console.log("entered xmlrequest");
+var request;
+if (window.XMLHttpRequest) {
+	request = new XMLHttpRequest();
+} else {
+	request = new ActiveXObject("Microsoft.XMLHTTP");
+}
+
+request.open('GET', 'http://128.2.207.3:3001/api/v1/houses.json');
+request.onreadystatechange = function() {
+	if ((request.readyState===4) && (request.status===200)) {
+		var items = JSON.parse(request.responseText);	
+		
+		document.writeln(request.responseText);
+
+	}
+	else {
+		console.log("did not enter onreadystatechange")
+	}
+}
+request.send();
+
+}
+
+xmlrequest();
+
+</script>
+</body>
+</html>

@@ -1,0 +1,161 @@
+
+
+<html>
+<head>
+
+	<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+	
+	</head>
+
+	<body>
+
+<form class="inset" name="new_post" method="post" action="http://ip.jsontest.com/">
+      	<label>User Name</label>
+       
+				<input id = "email" type="text" name="[email]" placeholder="Email" class="input-text" >
+				<label>Password</label>
+				<input id="password" name="[password]"type="password" placeholder="Password" class="input-text">
+  			  <div class="form-actions">
+  				    <input id="login" type = "submit"  class="btn btn-block" value="Log In"  > 
+          </div>
+        <input type="submit" >        
+      </form>
+	  
+	<div id='TextBoxesGroup'>
+	<div id="TextBoxDiv1">
+		<label>Textbox #1 : </label><input type='textbox' id='textbox1' >
+	</div>
+</div>
+<input type='button' value='Add Button' id='addButton'>
+<input type='button' value='Remove Button' id='removeButton'>
+<input type='button' value='Get TextBox Value' id='getButtonValue'>
+ 
+</div>
+
+<h2>Form</h2>
+<form action="" method="post">
+First Name:<input type="text" name="Fname" maxlength="12" size="12"/> <br/>
+Last Name:<input type="text" name="Lname" maxlength="36" size="12"/> <br/>
+Gender:<br/>
+Male:<input type="radio" name="gender" value="Male"/><br/>
+Female:<input type="radio" name="gender" value="Female"/><br/>
+Favorite Food:<br/>
+Steak:<input type="checkbox" name="food[]" value="Steak"/><br/>
+Pizza:<input type="checkbox" name="food[]" value="Pizza"/><br/>
+Chicken:<input type="checkbox" name="food[]" value="Chicken"/><br/>
+<textarea wrap="physical" cols="20" name="quote" rows="5">Enter your favorite quote!</textarea><br/>
+Select a Level of Education:<br/>
+<select name="education">
+<option value="Jr.High">Jr.High</option>
+<option value="HighSchool">HighSchool</option>
+<option value="College">College</option></select><br/>
+Select your favorite time of day:<br/>
+<select size="3" name="TofD">
+<option value="Morning">Morning</option>
+<option value="Day">Day</option>
+<option value="Night">Night</option></select>
+<p><input type="submit" /></p>
+</form>
+<h2>JSON</h2>
+<pre id="result">
+</pre>
+<script>
+$(document).ready(function(){
+ 
+    var counter = 2;
+ 
+    $("#addButton").click(function () {
+ 
+	if(counter>10){
+            alert("Only 10 textboxes allow");
+            return false;
+	}   
+ 
+	var newTextBoxDiv = $(document.createElement('div'))
+	     .attr("id", 'TextBoxDiv' + counter);
+ 
+	newTextBoxDiv.after().html('<label>Textbox #'+ counter + ' : </label>' +
+	      '<input type="text" name="textbox' + counter + 
+	      '" id="textbox' + counter + '" value="" >');
+ 
+	newTextBoxDiv.appendTo("#TextBoxesGroup");
+ 
+ 
+	counter++;
+     });
+ 
+     $("#removeButton").click(function () {
+	if(counter==1){
+          alert("No more textbox to remove");
+          return false;
+       }   
+ 
+	counter--;
+ 
+        $("#TextBoxDiv" + counter).remove();
+ 
+     });
+ 
+     $("#getButtonValue").click(function () {
+ 
+	var msg = '';
+	for(i=1; i<counter; i++){
+   	  msg += "\n Textbox #" + i + " : " + $('#textbox' + i).val();
+	}
+    	  alert(msg);
+     });
+  });
+
+
+var myJSONObject = {"bindings": [
+        {"ircEvent": "PRIVMSG", "method": "newURI", "regex": "^http://.*"},
+        {"ircEvent": "PRIVMSG", "method": "deleteURI", "regex": "^delete.*"},
+        {"ircEvent": "PRIVMSG", "method": "randomURI", "regex": "^random.*"}
+    ]
+};
+$.fn.serializeObject = function()
+{
+    var o = {};
+    var a = this.serializeArray();
+    $.each(a, function() {
+        if (o[this.name] !== undefined) {
+            if (!o[this.name].push) {
+                o[this.name] = [o[this.name]];
+            }
+            o[this.name].push(this.value || '');
+        } else {
+            o[this.name] = this.value || '';
+        }
+    });
+    return o;
+};
+
+$(function() {
+    $('form').submit(function() {
+        $('#result').text(JSON.stringify($('form').serializeObject()));
+        return false;
+    });
+});
+
+console.log(myJSONObject.bindings[0].method);
+
+$(function(){
+  $('form[name=new_post]').submit(function(){
+  	alert($(this).attr('action'));
+    $.post($(this).attr('action'), $(this).serialize(), function(json) {
+      alert(json.ip);
+    }, 'json').done(function() { alert("second success"); })
+.fail( function(xhr, textStatus, errorThrown) {
+        alert("Could not connect to internet");
+		alert(errorThrown);
+    });
+
+    return false;
+  });
+});
+
+</script>
+
+</body>
+
+</html>

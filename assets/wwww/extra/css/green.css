@@ -1,0 +1,18 @@
+.ui-page{
+	background: #e3e3e3;
+}
+
+.center-wrapper{
+text-align: center;
+}
+.center-wrapper * {
+margin: 0 auto;
+}
+
+.nav-glyphish-example .ui-btn .ui-btn-inner { padding-top: 40px !important; }
+.nav-glyphish-example .ui-btn .ui-icon { width: 30px!important; height: 30px!important; margin-left: -15px !important; box-shadow: none!important; -moz-box-shadow: none!important; -webkit-box-shadow: none!important; -webkit-border-radius: none !important; border-radius: none !important; }
+#bottom-nav-add .ui-icon { background:  url(images/10-medical.png) 50% 50% no-repeat; }
+#browse .ui-icon { background:  url(images/06-magnify.png) 50% 50% no-repeat; 
+}
+#compare .ui-icon { background:  url(images/42-photos.png) 50% 50% no-repeat; }
+#logout .ui-icon { background:  url(images/63-runner.png) 50% 50% no-repeat; }

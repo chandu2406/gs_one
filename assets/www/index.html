@@ -1,215 +1,445 @@
 <!DOCTYPE html>
-<!--
-	Licensed to the Apache Software Foundation (ASF) under one
-	or more contributor license agreements.  See the NOTICE file
-	distributed with this work for additional information
-	regarding copyright ownership.  The ASF licenses this file
-	to you under the Apache License, Version 2.0 (the
-	"License"); you may not use this file except in compliance
-	with the License.  You may obtain a copy of the License at
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>Green Score</title>
 
-	http://www.apache.org/licenses/LICENSE-2.0
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-	Unless required by applicable law or agreed to in writing,
-	software distributed under the License is distributed on an
-	"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-	 KIND, either express or implied.  See the License for the
-	specific language governing permissions and limitations
-	under the License.
--->
-<html>
-	<head>
-		<meta charset="utf-8" />
-		<meta name="format-detection" content="telephone=no" />
-		<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
-		<link rel="stylesheet" type="text/css" href="css/gs.min.css" />
-		<link rel="stylesheet" href="css/jquery.mobile.custom.structure.min.css" />
-		<link rel="stylesheet" href="css/green.css" />
-		<!--<link rel="stylesheet" type="text/css" href="css/jquery.mobile.custom.theme.min.css" />-->
-		<script type="text/javascript" src="js/jquery.min.js"></script>
-		<script type="text/javascript" src="js/jquery.mobile-1.3.1.min.js"></script>
-		<script type="text/javascript" src="js/green.js"></script>
-		<script type="text/javascript" src="js/httprequest.js"></script>
+	<link rel="stylesheet" href="css/jquery.mobile.css" />
+	 <script type="text/javascript" charset="utf-8" src="cordova-2.7.0.js"></script>  
+	<script src="js/jquery.js"></script>
+	<script src="js/jquery.mobile.js"></script>
+	
 
-		<title>Hello World</title>
-	</head>
-	<body>
-		
-		<!-- Page: Add-->
-		<div id="add-page" data-role="page" data-title="View Source: Add Page">
-			<div data-role="header" data-theme="a" data-position="fixed">
-				<h1>Green Score</h1>
-			</div> <!--header-->
-			<div data-role="content" data-theme="a">
-				<div class="center-wrapper">
-				<img src="img/hogar.png" style="padding: 30px;" /></div>
-				<div id="cms-1" style="display:none;">CONNECTS</div>
-				<div id="cms-2" style="display:none;">FAILS</div>
+	
+	<link rel="stylesheet" href="css/mystyles.css" />
+	<script src="js/myscript.js"></script>
+</head>
+<body>
+
+  <!-- Sign In Page -->
+  
+  
+  <div id="signin"
+	data-role="page"
+	data-title="Sign In" >
+	
+	<div data-role="header"
+	data-position="fixed" >
+	 
+	 <h1> Greenscore </h1>
+	 </div> <!--header -->
+	 <div data-role="content">
+			<img id="logo"  style= " display: block;margin-left:auto; margin-right:auto " alt="View Source Logo" />
+		</div>
+	  
+        <div data-role="content">
+        <form method="post" action="http://time.jsontest.com/" name="new_post">
+    		
+
+    		<label for="username" ><b>Email</b></label>
+			<input type="text" name="username" id="username" value="" placeholder="Enter your Email"/>
+
+            <div data-role="fieldcontain">
+    		    <label for="address"> <b>Password </b> </label>
+			    <input type="password" name="password" id="password" value="" placeholder="Your Password"/>
+				<input type="submit"  data-theme="b" data-mini="true" value="Sign In" />
 				
-				<form id="add-form" action="#" style="padding: 30px;">
-					<input type="text" name="address" id="add-form-address" value="" placeholder="Enter your home address"/>
-					<input type="text" name="label"/ id="add-form-label" value="" placeholder="Enter a label for the home"/>
-				<fieldset class="ui-grid-a" style="padding-top:20px;">
-				<div class="ui-block-a">
-				<button type="submit" data-icon"delete">Cancel</button></div>
-				<div class="ui-block-b"><button type="submit" data-icon"delete">Save</button></div>
-				</fieldset>
-				</form>
-			</div> <!--content-->
-			<div data-role="footer" data-theme="a"class="nav-glyphish-example" data-position="fixed">
-			
-				<div data-role="navbar" class="nav-glyphish-example" data-grid="c">
-					<ul>
-						<li><a href="#" id="bottom-nav-add" data-icon="custom">Add Home</a></li>
-						<li><a href="#browse-page" id="browse" data-icon="custom">Browse</a></li>
-						<li><a href="#compare-page" id="compare" data-icon="custom">Compare</a></li>
-						<li><a href="#" id="logout" data-icon="custom">Logout</a></li>
-					</ul>
-				</div> <!--navbar-->
-			</div> <!--footer-->
-		</div> <!--page-->
+				
+            </div>
+        </form>
+		</br><p> <b>New User?</b> </p>
+				<a href="#tncdialog" data-theme="b" data-role="button" data-rel="dialog" data-transition="pop" data-mini="true">Sign Up</a>
+				<a href="#camera" data-theme="b" data-role="button"  data-transition="pop" data-mini="true">Photo </a>
+				<a href="#home" data-theme="b" data-role="button"  data-transition="pop" data-mini="true">Home wormhome</a>
+        </div>
 		
-		<!-- Page: Browse-->
-		<div id="browse-page" data-role="page" data-title="View Source: Add Page">
-			<div data-role="header" data-theme="a" data-position="fixed">
-				<h1>Green Score</h1>
-			</div> <!--header-->
-			<div data-role="content" data-theme="a">
-				<ul data-role="listview" data-filter="true" data-filter-placeholder="Search house" data-split-icon="gear" data-inset="true" >
-					<li><a href="#home-view"><h2>Gates Building</h2><p>Carnegie Mellon University, 5000 Forbes Avenue, Pittsburgh PA 15289</p></a><a href="#home-edit">edit</a>
-					</li>
-				</ul>
-			</div> <!--content-->
-			<div data-role="footer" data-theme="a"class="nav-glyphish-example" data-position="fixed">
-			
-				<div data-role="navbar" class="nav-glyphish-example" data-grid="c">
-					<ul>
-						<li><a href="#add-page" id="bottom-nav-add" data-icon="custom">Add Home</a></li>
-						<li><a href="#browse-page" id="browse" data-icon="custom">Browse</a></li>
-						<li><a href="#compare-page" id="compare" data-icon="custom">Compare</a></li>
-						<li><a href="#" id="logout" data-icon="custom">Logout</a></li>
-					</ul>
-				</div> <!--navbar-->
-			</div> <!--footer-->
-		</div> <!--page-->
+ 
+  
+  
+  
+  </div>
+  
+<div id="camera"  data-role="page">
+        <div data-role="header">
+            <h1>Research Study</h1>
+        </div>
+        <div data-role="content">
+        
+		<button onclick="capturePhoto();">Capture Photo</button> <br>
+    <button onclick="capturePhotoEdit();">Capture Editable Photo</button> <br>
+    <button onclick="getPhoto(pictureSource.PHOTOLIBRARY);">From Photo Library</button><br>
+    <button onclick="getPhoto(pictureSource.SAVEDPHOTOALBUM);">From Photo Album</button><br>
+    <img style="display:none;width:60px;height:60px;" id="smallImage" src="" />
+    <img style="display:none;width:100px;height:100px;" id="largeImage" src="" />
 		
-		<!-- Page: View-->
-		<div id="home-view" data-role="page" data-title="View Source: Home View">
-			<div data-role="header" data-theme="a" data-position="fixed">
-				<h1>Green Score</h1>
-			</div> <!--header-->
-			<div data-role="content" data-theme="a">
-				<h1>Gates Building</h1>
-				<p>Self Rating</p>
+	
+        </div>
+       
+					
+			
+		
+	</div><!-- page -->
+    
+	
+	<!--Terms and Conditons -->
+	
+	<div id="tncdialog"  data-role="page">
+        <div data-role="header">
+            <h1>Research Study</h1>
+        </div>
+        <div data-role="content">
+        
+		<p align="justify" > This Study is part of a research  conducted by Jennifer Mankoff at Carnegie Mellon 
+University at Human-Computer Interaction Institute. The purpose of the research is to learn 
+about factors that are important when making housing choices. </p>
+<p align="justify">CMU's Research Regulatory Compliance Office oversees our study. As a result, participation 
+in this study is limited to individuals age 18 and older. There is no risk or cost to you, nor 
+benefit or compensation for participation. To ensure this, we will make sure that any personally
+identifiable information is elided from your data prior to analysis. In addition, your participation
+is voluntary. Read the <a href="#consent" data-rel="dialog" data-transition="pop"> consent here </a>
+ </p>
+		
+		<a href="#signup" type="button"data-transition="slide">I am Above 18 & I Agree</a>
+		<a href="#signin" type="button" data-transition="slide">I don't Agree</a>
+        </div>
+        <div data-role="footer">Copyright Greenscore 2013</div>
+    </div>
+					
+			
+		
+	</div><!-- page -->
+	
+	<!--Consent-->
+	
+	<div id="consent"  data-role="page">
+        <div data-role="header">
+            <h1>Consent</h1>
+        </div>
+        <div data-role="content">
+        
+		<p align="justify" > <b>Study Title: Greenscore Field Evaluation</b> <br/><br/>
+
+<b>Principal Investigator: Jennifer Mankoff, HCI Institute, Carnegie Mellon, </b> <br/>
+5000 Forbes Ave, Pittsburgh, PA 15213, 412 268 1295, jmankoff@cs.cmu.edu, http://www.cs.cmu.edu/~jmankoff
+
+<br/><b>Procedures  </b><br/>
+To accomplish our research, we need to monitor how you use the Greenscore interfaces. This includes recording when you log in, what pages you request, what factors you record about apartments, and so on.
+
+Once you are a registered member of Greenscore, we will provide you with a mobile and web interface to find and compare homes available for rent in an area. You will also be asked for providing some personal information like age, gender, number of people in your household etc.  to help provide results tailored to your needs.
+
+The details you provide us about homes you visit will be visible to other people who use the application and will be shown as reviews and calculate metrics related to a household you compare.
+
+When you use the Greenscore system, we administer one or more browser cookies. These help identify you and store your preferences. They are not shared with other sites and are not used for advertisements.
+
+We occasionally conduct interviews or surveys, and/or implement additional features for the purpose of our research. Participation in these "extras" may require us to ask for additional data. This consent statement does not cover such additional activities. A specific consent form will be made clearly available for each activity not covered under this statement, and participation in such activities will be made optional.
+
+Participant Requirements  
+You must be 18 years or older to use Greenscore applications and website.
+
+<br/><b>Risks </b><br/>
+You may find the following risks or discomforts from participating in this study: An important part of Greenscore is the sharing of information amongst users of the site. Information about what data you record may be seen by other users of the site if they know your account name. Additionally, we store your email address. You may opt out of receiving emails from us. You may modify this additional information and review your privacy settings at any time by clicking "Settings" when logged in to Greenscore. 
+
+<br/><b>Benefits </b><br/>
+There may be no personal benefit from your participation, although you may gain knowledge about what matters to you in the apartment search.  In addition, the knowledge received may be of value to humanity.
+
+<br/><b>Compensation & Costs	 </b><br/>
+There will be no cost to you if you participate in this study.   
+
+<br/><b>Confidentiality</b><br/>
+By participating in the study, you understand and agree that Carnegie Mellon may be required to disclose your consent form, data and other personally identifiable information as required by law, regulation, subpoena or court order.  Otherwise, your confidentiality will be maintained in the following manner:
+
+Greenscore mobile application does not release e-mail addresses or names to any third parties. Similar to other social networking sites, some account information may be displayed on your profile page and made accessible to other users, in accordance with your account's settings. Additionally, we may share your demographic data (without your name or e-mail address attached) in research results. Furthermore, we may refer to the actions of individual users (without your name or e-mail address attached) in research results. Aside from the above, information is held as confidential as is practical within our database.
+
+We represent users anonymously as numeric identifiers whenever possible, so that researchers do not know the real identity of the users in the data they are studying. However, we must store a mapping from email addresses to anonymous identifiers for the purpose of authenticating users at login, and resolving account issues such as forgotten passwords.
+
+By participating, you understand and agree that the data and information gathered during this study may be used by Carnegie Mellon and published and/or disclosed by Carnegie Mellon to others outside of Carnegie Mellon.
+
+<br/><b>Rights</b><br/>
+Your participation is voluntary.  You are free to stop your participation at any point.  Refusal to participate or withdrawal of your consent or discontinued participation in the study will not result in any penalty or loss of benefits or rights to which you might otherwise be entitled.  The Principal Investigator may at his/her discretion remove you from the study for any of a number of reasons.  In such an event, you will not suffer any penalty or loss of benefits or rights which you might otherwise be entitled.
+
+<br/><b>Right to Ask Questions & Contact Information </b><br/>
+If you have any questions about this study, you should feel free to ask them now or anytime throughout the study by contacting Professor Jennifer Mankoff at Carnegie Mellon. She can be contacted directly at mailto:jmankoff@cs.cmu.edu, by phone at +1 412 268 1295, or by mail at: Human Computer Interaction Institute, Carnegie Mellon, 5000 Forbes Ave, Pittsburgh, PA 15213. 
+
+If you have questions later, desire additional information, or wish to withdraw your participation please contact the Principle Investigator by mail, phone or e-mail.  
+	
+If you have questions pertaining to your rights as a research participant; or to report objections to this study, you should contact the Research Regulatory Compliance Office at Carnegie Mellon University. <br/> <b>Email: irb-review@andrew.cmu.edu </br>Phone: 412-268-1901 or 412-268-5460.<br/></b>
+
+The Carnegie Mellon University Institutional Review Board (IRB) has approved the use of human participants for this study. 
+
+<br/><b>Voluntary Participation</b><br/>
+Your participation in this research is voluntary.  You may discontinue participation at any time during the research activity.  
+
+
+ </p>
+		
+		<a href="#tncdialog" type="button" >Close</a>
+		
+        </div>
+        
+    </div>
+					
+			
+		
+	</div><!-- page -->
+	
+	
+	
+	
+	
+	<!-- Sign Up Page -->
+	<div id="signup"
+		data-role="page"
+		data-title="Greenscore: Signup">
+
+		<div data-role="header"
+			data-position="fixed">
+			<h1>Sign Up</h1>
+		</div><!-- header -->
+		
+		<div data-role="content">
+			<img src="images/safe_image.png" style= " display: block;margin-left:auto; margin-right:auto " alt="View Source Logo" />
+		</div>
+		
+		
+			<form method="get" action="">
+    		
+
+    		<label for="username" ><b>Email</b></label>
+			<input type="text" name="username" id="username" value="" placeholder="Enter your Email"/>
+
+            <div data-role="fieldcontain">
+    		    <label for="password"> <b>Password </b> </label>
+			    <input type="password" name="password" id="password" value="" placeholder="Your Password"/>
+				<label for="password"> <b>Password </b> </label>
+			    <input type="password" name="con_password" id="con_password" value="" placeholder="Enter Password Again"/>
+				<input type="submit" value="Sign Up" />
+				
+				
+            </div>
+        </form>
+						
+		
+	</div><!-- page -->
+	
+	
+	
+	
+	<!-- Page: home -->
+	<div id="home"
+		data-role="page"
+		data-title="Greenscore: Home">
+
+		<div data-role="header"
+			data-position="fixed">
+			<h1>Greenscore</h1>
+		</div><!-- header -->
+		<p>Welcome to the Greenscore App. Home searching made easy. You can review, save and compare homes you visit.</p>
+		<div data-role="controlgroup">
+			
+			
+			<a href="#reviewhomes" 
+				data-role="button"
+				data-icon="arrow-r"
+				data-iconpos="right"
+				data-transition = "slide"
+				
+			>Review Home</a>
+			
+			<a href="#myhomes" 
+				data-role="button"
+				data-icon="arrow-r"
+				data-iconpos="right"
+				data-transition = "slide"
+			>My Homes</a>
+
+		</div><!-- links -->
+	</div><!-- page -->
+	
+	
+	
+	
+	<!-- Page: My Homes -->
+	<div id="myhomes"
+		data-role="page"
+		data-title="Greenscore: My Homes">
+		<div data-role="header"
+			data-position="fixed"
+			data-id="vs_header">
+			<h1>My Homes</h1>
+			<a href="#home" data-icon="home" data-iconpos="notext" data-transition = "slide">Home</a>
+		</div><!-- header -->
+		<div data-theme="c"
+		data-role="content"
+		id="#postlist">
+			<div data-role="collapsible-set">
+				<div data-role="collapsible">
+					<h3>Home Label 1</h3>
+					<p>Sunlight: yes</p>
+					<p>Mold: yes</p>
+					<p>Image: <p/>
+					<a href="#indihouse" data-role="button" data-mini="true" data-icon="arrow-r" data-iconpos="right">View More</a>
+					
+				</div><!-- collapsible -->
+				
+				<div data-role="collapsible"
+					data-collapsed="false">
+					<h3>Home Label 2</h3>
+					<p>Sunlight: yes</p>
+					<p>Mold: yes</p>
+					<p>Image: <p/>
+					<a href="#indihouse" data-role="button" data-mini="true" data-icon="arrow-r" data-iconpos="right">View More</a>
+					</div><!-- collapsible -->
+				
+				<div data-role="collapsible">
+					<h3>Home Label 3</h3>
+					<p>Sunlight: yes</p>
+					<p>Mold: yes</p>
+					<p>Image: <p/>
+					<a href="#indihouse" data-role="button" data-mini="true" data-icon="arrow-r" data-iconpos="right"> View More</a>
+				</div><!-- collapsible -->
+				
+				<div data-role="collapsible">
+					<h3>Home Label 4</h3>
+					<p>Sunlight: yes</p>
+					<p>Mold: yes</p>
+					<p>Image: <p/>
+					<a href="#indihouse" data-role="button" data-mini="true" data-icon="arrow-r" data-iconpos="right" >View More</a>
+				</div><!-- collapsible -->
+				
+				<div data-role="collapsible">
+					<h3>Home Label 5</h3>
+					<p>Sunlight: yes</p>
+					<p>Mold: yes</p>
+					<p>Image: <p/>
+					<a href="#indihouse" data-role="button" data-mini="true" data-icon="arrow-r" data-iconpos="right" >View More</a>
+				</div><!-- collapsible -->
+			
+			</div><!-- accordion -->
+		</div><!-- content -->
+		<div data-role="footer"
+			data-position="fixed"
+			data-id="vs_footer">
+			<div data-role="navbar">
 				<ul>
-					<li>Sunlight: Strong</li>
-					<li>Lead Poisoning: Severe</li>
-					<li>Air Quality: Okay</li>
-					<li>Rating: 4/5</li>
+					<li><a href="#home" 
+					data-role="button"
+					data-icon="home"
+					data-transition = "slide"
+					>Home</a></li>
+					<li><a href="#myhomes" 
+					data-role="button"
+					data-icon="arrow-r"
+					data-transition = "slide"
+					>My Homes</a></li>
+					<li><a href="#reviewhomes" 
+					data-role="button"
+					data-icon="arrow-r"
+					data-transition = "slide"
+					>Review Homes</a></li>
+					
 				</ul>
-				<p>Overall Rating</p>
+			</div><!-- navbar -->
+		</div><!-- footer -->
+	</div><!-- page -->
+
+	<!-- Page: Review Homes -->
+	<div id="reviewhomes"
+		data-role="page"
+		data-title="Greenscore : Review Homes">
+		<div data-role="header"
+			data-position="fixed"
+			data-id="vs_header">
+			<h1>Review Home</h1>
+			<a href="#home" data-icon="home" data-iconpos="notext" data-transition = "slide">Home</a>
+		</div><!-- header -->
+		<form name="factorform" method="post" action="">
+		<input type="submit"  data-theme="b" data-mini="true" value="Save"/> 
+   <div data-role="content" id="addMoreButtons">
+   <label for="basic">Factor Name:</label>
+    <input type="text" name="newButtonName" id="newButtonName" value="" />
+   <a href="#" data-role="button" id="addButtonName">Add Factor</a>
+
+        <div id="sunlight" data-role="header">
+	<a href="#"  onclick= 'removeel("#sunlight")' data-icon="delete" class="ui-btn-right">Cancel</a><h3>Sunlight</h3> 
+	<input type="text" name="sunlight_value" id="" value="" /> </div>
+	
+        <div id="mold" data-role="header">
+	<a href="#"  onclick= 'removeel("#mold")' data-icon="delete" class="ui-btn-right">Cancel</a><h3>Mold</h3> 
+	<input type="text" name="mold_value" id="" value="" /> </div>
+	
+	</form>
+
+ 
+   
+   
+	   
+	
+</div>
+    </div>
+</div>
+
+		<div data-role="footer"
+			data-position="fixed"
+			data-id="vs_footer">
+			<div data-role="navbar">
 				<ul>
-					<li>Sunlight: Strong</li>
-					<li>Lead Poisoning: Severe</li>
-					<li>Air Quality: Okay</li>
-					<li>Rating: 2.56/5</li>
+					<li><a href="#home" 
+					data-role="button"
+					data-icon="home"
+					data-transition = "slide"
+					>Home</a></li>
+					<li><a href="#myhomes" 
+					data-role="button"
+					data-icon="arrow-r"
+					data-transition = "slide"
+					>My Homes</a></li>
+					<li><a href="#reviewhomes" 
+					data-role="button"
+					data-icon="arrow-r"
+					data-transition = "slide"
+					>Review Homes</a></li>
 				</ul>
-				<p>Notes</p>
-				<ul>
-					<li>Very good, but sometimes there are smelly people there who don't shower</li>
-				</ul>
-				<p>Images</p>
-				<img src="img/gates.jpg" style="width:50%; padding-bottom: 20px;">
-				<a href="#browse-page" data-role="button" data-icon="back">Back</a>
-			</div> <!--content-->
-			<div data-role="footer" data-theme="a"class="nav-glyphish-example" data-position="fixed">
-			
-				<div data-role="navbar" class="nav-glyphish-example" data-grid="c">
-					<ul>
-						<li><a href="#add-page" id="bottom-nav-add" data-icon="custom">Add Home</a></li>
-						<li><a href="#browse-page" id="browse" data-icon="custom">Browse</a></li>
-						<li><a href="#compare-page" id="compare" data-icon="custom">Compare</a></li>
-						<li><a href="#" id="logout" data-icon="custom">Logout</a></li>
-					</ul>
-				</div> <!--navbar-->
-			</div> <!--footer-->
-		</div> <!--page-->
+			</div><!-- navbar -->
+		</div><!-- footer -->
+		 
+	
+		<script>
+$('#addButtonName').click(function() {
+    var thediv = $('#addMoreButtons');
+    var buttonName= $('#newButtonName');
+   
+	
+	
+    if(buttonName.val() != '') {
+        thediv.append('<div id="'+buttonName.val()+ '"data-role="header" class="ui-header ui-bar-a" role="banner"><a href="#"  onclick="removeel('+"'#"+buttonName.val()+"'"+ ')"data-icon="delete" class="ui-btn-right ui-btn ui-btn-up-a ui-shadow ui-btn-corner-all ui-btn-icon-left" data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" data-theme="a"><span class="ui-btn-inner ui-btn-corner-all"><span class="ui-btn-text">Cancel</span><span class="ui-icon ui-icon-delete ui-icon-shadow">&nbsp;</span></span></a><h3 class="ui-title" role="heading" aria-level="1">'+buttonName.val()+'</h3> </div>');
+        buttonName.val('');
+        $('#theHomePage').trigger('create');  
 		
-		<!-- Page: Edit-->
-		<div id="home-edit" data-role="page" data-title="View Source: Home Edit">
-			<div data-role="header" data-theme="a" data-position="fixed">
-				<h1>Green Score</h1>
-			</div> <!--header-->
-			<div data-role="content" data-theme="a">
-				<h1>Gates Building</h1>
-				<ul data-role="listview" data-inset="true" data-divider-theme="d">
-				    <li data-role="list-divider">Environmental Factors</li>
-				    <li><a href="#">Sunlight</a></li>
-				    <li><a href="#">Lead Poisoning</a></li>
-				    <li><a href="#">Air Quality</a></li>
-				    <li data-role="list-divider">Personal</li>
-				    <li><a href="#">Add a note</a></li>
-				    <li data-role="list-divider">Media</li>
-				    <li><a href="#">Add an image</a></li>
-				</ul>
-				<a href="#browse-page" data-role="button" data-icon="back">Back</a>
-			</div> <!--content-->
-			<div data-role="footer" data-theme="a"class="nav-glyphish-example" data-position="fixed">
-			
-				<div data-role="navbar" class="nav-glyphish-example" data-grid="c">
-					<ul>
-						<li><a href="#add-page" id="bottom-nav-add" data-icon="custom">Add Home</a></li>
-						<li><a href="#browse-page" id="browse" data-icon="custom">Browse</a></li>
-						<li><a href="#compare-page" id="compare" data-icon="custom">Compare</a></li>
-						<li><a href="#" id="logout" data-icon="custom">Logout</a></li>
-					</ul>
-				</div> <!--navbar-->
-			</div> <!--footer-->
-		</div> <!--page-->
+    }
+});
+function removeel(ids) {
+     
+		$(ids).remove();
+    
+}
+</script>
+	</div><!-- page -->
+	
+	<!-- Page: Individual House -->
+	<div id="indihouse"
+		data-role="page"
+		data-title="Greenscore: Individual House">
+
+		<div data-role="header"
+			data-position="fixed">
+			<h1>Greenscore</h1>
+		</div><!-- header -->
+		<p>This is individual house page</p>
 		
-		<!-- Page: Compare-->
-		<div id="compare-page" data-role="page" data-title="View Source: Compare">
-			<div data-role="header" data-theme="a" data-position="fixed">
-				<h1>Green Score</h1>
-			</div> <!--header-->
-			<div data-role="content" data-theme="a">
-				<div class="center-wrapper"><img src="img/chart.png" style="padding-top: 120px; width: 75%;"/></div>
-			</div> <!--content-->
-			<div data-role="footer" data-theme="a"class="nav-glyphish-example" data-position="fixed">
-			
-				<div data-role="navbar" class="nav-glyphish-example" data-grid="c">
-					<ul>
-						<li><a href="#add-page" id="bottom-nav-add" data-icon="custom">Add Home</a></li>
-						<li><a href="#browse-page" id="browse" data-icon="custom">Browse</a></li>
-						<li><a href="#compare-page" id="compare" data-icon="custom">Compare</a></li>
-						<li><a href="#" id="logout" data-icon="custom">Logout</a></li>
-					</ul>
-				</div> <!--navbar-->
-			</div> <!--footer-->
-		</div> <!--page-->
-		
-		<!--<div id="login" data-role="page" data-title="View Source: Login Page">
-			<div data-role="header" data-theme="a" data-position="fixed">
-				<h1>Green Score</h1>
-			</div> <!--header--*>
-			<div data-role="content" data-theme="a">
-				<form action="home.html">
-					<input type="text" name="email" id="username" value="" placeholder="Email"/>
-					<input type="password" name="password"/ id="password" value="" placeholder="Password"/>
-				</form>		
-			</div>
-			<div data-role="footer" data-theme="a"class="nav-glyphish-example" data-position="fixed">
-			
-				<div data-role="navbar" class="nav-glyphish-example" data-grid="c">
-					<ul>
-						<li><a href="#" id="add" data-icon="custom">Add Home</a></li>
-						<li><a href="#" id="browse" data-icon="custom">Browse</a></li>
-						<li><a href="#compare-page" id="compare" data-icon="custom">Compare</a></li>
-						<li><a href="#" id="logout" data-icon="custom">Logout</a></li>
-					</ul>
-				</div> <!--navbar--*>
-			</div> <!--footer--*>
-		</div> <!--page--*>-->
-		<!--<script type="text/javascript" src="cordova-2.7.0.js"></script>-->
-	</body>
+   
+	</div><!-- page -->
+
+</body>
 </html>

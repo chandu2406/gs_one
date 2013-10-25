@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+    	 <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    </head>
+
+	  <body>
+
+      <form class="inset" name="new_post" method="post" action="http://128.2.207.3:3001/api/v1/tokens.json">
+        <label>User Name</label>       
+				<input id = "email" type="text" name="[email]" placeholder="Email" class="input-text" >
+				<label>Password</label>
+				<input id="password" name="[password]"type="password" placeholder="Password" class="input-text">
+  			  <div class="form-actions">
+  				    <input id="login" type = "submit"  class="btn btn-block" value="Log In"  > 
+          </div>
+        <input type="submit" >        
+      </form>
+
+<script>
+ //$.support.cors = true;
+ 
+
+$(function(){
+  $('form[name=new_post]').submit(function(){
+  	
+    $.post($(this).attr('action'), $(this).serialize(), function(json) {
+      var obj = jQuery.parseJSON(json);
+alert(obj.token);
+    }, 'json').done(function() { alert("second success"); })
+.fail( function(xhr, textStatus, errorThrown) {
+        alert(errorThrown);
+    });
+
+    return false;
+  });
+});
+
+</script>
+
+</body>
+
+</html>
